@@ -1,0 +1,12 @@
+<div = class="tweet">
+
+<h3><%= link_to(tweet.title, tweet) %> </h3>
+
+<p> <%= tweet.body %> </p>
+
+<ul>
+	<li><%= edit_tweet_link(tweet) %></li>
+	<li><%= delete_tweet_link(tweet) %></li>
+</ul>
+
+</div>

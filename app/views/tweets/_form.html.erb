@@ -1,0 +1,22 @@
+<% if @tweet.errors.any? %>
+
+<ul class="error_messages">
+	<% @tweet.errors.full_messages.each do |error| %>
+		<li><%= error %></li>
+	<% end %>
+</ul>
+<% end %>
+
+<%= form_for(@tweet) do |f| %>
+	<div>
+	<%= f.label(:title) %>
+	<%= f.text_field(:title, placeholder: "Enter title here") %>
+	</div><br>
+	<div>
+	<%= f.label(:body) %>
+	<%= f.text_field(:body, placeholder: "Enter body here") %>
+	</div><br>
+	<div>
+	<%= f.submit %>
+	</div>
+<% end %>
