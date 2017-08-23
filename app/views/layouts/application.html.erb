@@ -11,6 +11,9 @@
 			<li><%= link_to('All Tweets', root_path)%></li>
 			<li><%= link_to('New Tweet', new_tweet_path)%></li>
 		</ul>
+		<% if flash.alert %>
+			<div class = 'alert'> <%= flash.alert %> </div>
+		<% end %>
 		<% if flash.notice %>
 			<div class = 'notice'> <%= flash.notice %> </div>
 		<% end %>
