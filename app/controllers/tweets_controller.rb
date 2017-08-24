@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
 	before_action(:find_tweet, only: [:show, :edit, :update, :destroy])
-	before_action :authenticate_user!
+	before_action(:authenticate_user!, except: [:index, :show])
 
 	def index # action needs to tie to one of the routes
 		@tweets = Tweet.all # you can call the instance variable ('@x') whatever you want
