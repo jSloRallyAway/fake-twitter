@@ -2,17 +2,17 @@
 
 	<h3><%= link_to(tweet.title, tweet) %> </h3>
 	<% if tweet.user %>
-	<p>By: <%= tweet.user.email %></p>
+	<p>By: <%= link_to(tweet.user.email, tweet.user) %></p>
 	<% end %>
 	<!-- OR <p> <%= tweet.user.try(:email) || 'Anonymous User' %> </p> -->
 
 
 
 	<p> <%= tweet.body %> </p>
-
-	<ul>
-		<li><%= edit_tweet_link(tweet) %></li>
-		<li><%= delete_tweet_link(tweet) %></li>
-	</ul>
-
+	<% if tweet.admin_or_belongs_to?(current_user) %>
+		<ul>
+			<li><%= edit_tweet_link(tweet) %></li>
+			<li><%= delete_tweet_link(tweet) %></li>
+		</ul>
+	<% end  %>
 </div>

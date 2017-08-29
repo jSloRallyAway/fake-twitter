@@ -10,7 +10,7 @@
 		<ul>
 			<% if user_signed_in? %>
 			<li><%= link_to('New Tweet', new_tweet_path)%></li>
-			<li> <%= current_user.email %> </li>
+			<li> Logged in as: <%= link_to(current_user.email, current_user) %> </li>
 			<li> <%= link_to('Log Out', destroy_user_session_path, method: :delete) %> </li>
 			<% else %>
 			<li> <%= link_to('Log In', new_user_session_path) %> </li>
@@ -19,8 +19,17 @@
 		</ul>
 
 		<ul>
+			<li>
+				<%= form_tag(root_path, method: :get) do %>
+					<%= text_field_tag(:query, params[:query], placeholder: 'Search') %>
+					<%= submit_tag('Search') %>
+				<% end %>
+			</li>
 			<li><%= link_to('All Tweets', root_path)%></li>
+			<li><%= link_to('All Users', users_path) %></li>
 		</ul>
+
+		
 		<% if flash.alert %>
 			<div class = 'alert'> <%= flash.alert %> </div>
 		<% end %>

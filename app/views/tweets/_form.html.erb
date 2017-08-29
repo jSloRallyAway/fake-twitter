@@ -16,6 +16,12 @@
 	<%= f.label(:body) %>
 	<%= f.text_field(:body, placeholder: "Enter body here") %>
 	</div><br>
+	<% if current_user.admin? %>
+	<div>
+	<%= f.label(:user_id) %>
+	<%= f.collection_select(:user_id, User.all, :id, :email) %>
+	</div><br>
+	<% end %>
 	<div>
 	<%= f.submit %>
 	</div>

@@ -1,3 +1,12 @@
+<% if params[:query] %>
+	<h2>Searching for <em><%= params[:query] %></em></h2>
+	<p>Found <%= pluralize(@tweets.count, 'tweet')%></p>
+<% else %>
 <h2>All Tweets</h2>
+<% end %>
 
+<% if @tweets.any? %>
 <%= render(@tweets) %>
+<% else %>
+	<p>No Tweets found.</p>
+<% end %>
