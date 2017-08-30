@@ -7,12 +7,16 @@
 	<!-- OR <p> <%= tweet.user.try(:email) || 'Anonymous User' %> </p> -->
 
 
-
 	<p> <%= tweet.body %> </p>
+	<% if tweet.image? %>
+	<p> <%= link_to_image(tweet.image) %> </p>
+	<% end %>
+
 	<% if tweet.admin_or_belongs_to?(current_user) %>
 		<ul>
 			<li><%= edit_tweet_link(tweet) %></li>
 			<li><%= delete_tweet_link(tweet) %></li>
 		</ul>
 	<% end  %>
+
 </div>

@@ -8,8 +8,13 @@ class Tweet < ActiveRecord::Base
 	end
 
 	def self.search(query)
-		query = "%#query}%"
+		query = "%#{query}%"
 		where("title LIKE ? OR body LIKE ?", query, query)
 	end
+
+  has_attached_file(:image, 
+  					styles: {thumbnail: "100x100>", 
+  							 full: "300x300>" })
+  validates_attachment_content_type(:image, content_type: /\Aimage\/.*\z/)
 
 end

@@ -44,7 +44,7 @@ class TweetsController < ApplicationController
 	end
 
 	def tweet_params
-		params[:tweet].permit(:title, :body, :user_id)
+		params[:tweet].permit(:title, :body, :user_id, :image)
 	end
 
 	def redirect_to_tweet(message)

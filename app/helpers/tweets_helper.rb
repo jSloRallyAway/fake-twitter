@@ -9,4 +9,9 @@ module TweetsHelper # only diff between this and a Class is that you can't creat
 	def delete_tweet_link(tweet)
 		link_to('Delete', tweet, method: :delete, data: {confirm: 'Are you sure?'})	
 	end
+
+	def link_to_image(image)
+		link_to(image_tag(image.url(:full)), image.url)
+	end
+
 end
